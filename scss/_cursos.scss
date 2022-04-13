@@ -1,0 +1,41 @@
+@import "colors";
+@import "fonts";
+
+.cursosContainer{
+  min-height: 80vh;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+
+  .carrito{
+    width: 30%;
+    margin: 1rem;
+    padding: 1rem;
+    padding-top: 0;
+    background-color: $salmon;
+    border: 2px solid $amaranja;
+    border-radius: 10px;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    div{
+      width: 75%;
+      padding: 1rem;
+      border-bottom: 2px solid $rosaPalo;
+      text-align: center;
+    }
+  }
+
+  .divTotal{
+    margin: 1rem;
+    padding: 1rem;
+    background-color: $amaranja;
+    border: 3px solid $rojo;
+    border-radius: 10px;
+    text-align: center;
+  }
+}

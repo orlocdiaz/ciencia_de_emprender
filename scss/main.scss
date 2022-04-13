@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@import "colors";
+@import "fonts";
+@import "index";
+@import "cursos";
+
+/*GENERAL */
+
+body {
+  background-color: $rosaPalo;
+}
+a {
+  text-decoration: none;
+}
+
+/*NAV*/
+
+nav {
+  padding: 0.5% 5%;
+  height: 15vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+
+  .menuContainer {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .menuLogo {
+      width: 25%;
+      display: flex;
+      align-items: center;
+    }
+
+    ul {
+      width: 50%;
+      list-style: none;
+
+      display: flex;
+      flex-flow: row;
+
+      li {
+        padding: 10px 30px;
+        font-family: $mainFont;
+        font-size: 18px;
+        color: $salmon;
+      }
+    }
+
+    .masterClassButton {
+      text-align: end;
+      width: 25%;
+    }
+  }
+}
+
+.masterClassLink {
+  padding: 0.75rem 1.5rem;
+  background-color: $rojo;
+  border-radius: 10px;
+  font-family: $mainFont;
+  font-size: 20px;
+  font-weight: bolder;
+  color: $amaranja;
+}
+
+/*FOOTER*/
+
+.footerContainer {
+  padding: 1rem 2rem;
+  background-color: $amarillo;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  .footerIcons {
+    margin-bottom: 1rem;
+    width: 40rem;
+
+    display: flex;
+    flex-flow: column;
+    .aIcons {
+      margin: 0.5rem 0;
+      border-bottom: 1px solid $amaranja;
+      
+      display: flex;
+      justify-content:center ;
+      align-items: center;
+      .iconImg {
+        margin-right: 1rem;
+        color:$rosaPalo;
+      }
+
+      .footerIconTitle {
+        font-family: $mainFont;
+        text-align: start;
+        color: $rosaPalo;
+
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0%;
+      }
+
+      .footerIconAddress {
+        font-family: $mainFont;
+        text-align-last: end;
+        color: $rosaPalo;
+
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0%;
+      }
+    }
+  }
+}

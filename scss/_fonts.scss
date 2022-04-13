@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Neutral Face', sans-serif;
+  src: url(../content/NeutralFace.otf);
+}
+
+
+$mainFont: 'Prompt', sans-serif;
+$downloadFont :'Neutral Face', sans-serif;
+
+h3{
+  font-family: $mainFont;
+}
+
+h4{
+  font-family: $mainFont;
+}

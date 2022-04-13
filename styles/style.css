@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+@font-face {
+  font-family: 'Neutral Face', sans-serif;
+  src: url(../content/NeutralFace.otf); }
+
+h3 {
+  font-family: "Prompt", sans-serif; }
+
+h4 {
+  font-family: "Prompt", sans-serif; }
+
+@font-face {
+  font-family: 'Neutral Face', sans-serif;
+  src: url(../content/NeutralFace.otf); }
+
+h3 {
+  font-family: "Prompt", sans-serif; }
+
+h4 {
+  font-family: "Prompt", sans-serif; }
+
+.indexCover {
+  margin: 0 10%;
+  height: 75vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center; }
+  .indexCover h1 {
+    font-family: "Neutral Face", sans-serif;
+    font-size: 6em;
+    text-align: center;
+    color: #F9B458; }
+  .indexCover #masterClassCover {
+    margin: 2rem;
+    padding: 1.5rem 4rem;
+    font-size: 26px;
+    font-weight: bolder; }
+
+@font-face {
+  font-family: 'Neutral Face', sans-serif;
+  src: url(../content/NeutralFace.otf); }
+
+h3 {
+  font-family: "Prompt", sans-serif; }
+
+h4 {
+  font-family: "Prompt", sans-serif; }
+
+.cursosContainer {
+  min-height: 80vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center; }
+  .cursosContainer .carrito {
+    width: 30%;
+    margin: 1rem;
+    padding: 1rem;
+    padding-top: 0;
+    background-color: #EE9881;
+    border: 2px solid #F9B458;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column;
+    align-items: center; }
+    .cursosContainer .carrito div {
+      width: 75%;
+      padding: 1rem;
+      border-bottom: 2px solid #FDD4CD;
+      text-align: center; }
+  .cursosContainer .divTotal {
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #F9B458;
+    border: 3px solid #e6563c;
+    border-radius: 10px;
+    text-align: center; }
+
+/*GENERAL */
+body {
+  background-color: #FDD4CD; }
+
+a {
+  text-decoration: none; }
+
+/*NAV*/
+nav {
+  padding: 0.5% 5%;
+  height: 15vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center; }
+  nav .menuContainer {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    align-items: center; }
+    nav .menuContainer .menuLogo {
+      width: 25%;
+      display: flex;
+      align-items: center; }
+    nav .menuContainer ul {
+      width: 50%;
+      list-style: none;
+      display: flex;
+      flex-flow: row; }
+      nav .menuContainer ul li {
+        padding: 10px 30px;
+        font-family: "Prompt", sans-serif;
+        font-size: 18px;
+        color: #EE9881; }
+    nav .menuContainer .masterClassButton {
+      text-align: end;
+      width: 25%; }
+
+.masterClassLink {
+  padding: 0.75rem 1.5rem;
+  background-color: #e6563c;
+  border-radius: 10px;
+  font-family: "Prompt", sans-serif;
+  font-size: 20px;
+  font-weight: bolder;
+  color: #F9B458; }
+
+/*FOOTER*/
+.footerContainer {
+  padding: 1rem 2rem;
+  background-color: #f4952f;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start; }
+  .footerContainer .footerIcons {
+    margin-bottom: 1rem;
+    width: 40rem;
+    display: flex;
+    flex-flow: column; }
+    .footerContainer .footerIcons .aIcons {
+      margin: 0.5rem 0;
+      border-bottom: 1px solid #F9B458;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .footerContainer .footerIcons .aIcons .iconImg {
+        margin-right: 1rem;
+        color: #FDD4CD; }
+      .footerContainer .footerIcons .aIcons .footerIconTitle {
+        font-family: "Prompt", sans-serif;
+        text-align: start;
+        color: #FDD4CD;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0%; }
+      .footerContainer .footerIcons .aIcons .footerIconAddress {
+        font-family: "Prompt", sans-serif;
+        text-align-last: end;
+        color: #FDD4CD;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0%; }

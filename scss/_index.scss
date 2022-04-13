@@ -1,0 +1,26 @@
+@import "colors";
+@import "fonts";
+
+.indexCover{
+  margin: 0 10%;
+  height: 75vh;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+
+  h1{
+    font-family: $downloadFont;
+    font-size: 6em;
+    text-align: center;
+    color: $amaranja;
+    }
+  
+  #masterClassCover{
+    margin: 2rem;
+    padding: 1.5rem 4rem;
+    font-size: 26px;
+    font-weight: bolder;
+  }
+}
