@@ -6,20 +6,32 @@
   font-family: 'Neutral Face', sans-serif;
   src: url(../content/NeutralFace.otf); }
 
+h2 {
+  font-family: "Neutral Face", sans-serif; }
+
 h3 {
   font-family: "Prompt", sans-serif; }
 
 h4 {
+  font-family: "Prompt", sans-serif; }
+
+p {
   font-family: "Prompt", sans-serif; }
 
 @font-face {
   font-family: 'Neutral Face', sans-serif;
   src: url(../content/NeutralFace.otf); }
 
+h2 {
+  font-family: "Neutral Face", sans-serif; }
+
 h3 {
   font-family: "Prompt", sans-serif; }
 
 h4 {
+  font-family: "Prompt", sans-serif; }
+
+p {
   font-family: "Prompt", sans-serif; }
 
 .indexCover {
@@ -31,7 +43,7 @@ h4 {
   align-items: center; }
   .indexCover h1 {
     font-family: "Neutral Face", sans-serif;
-    font-size: 6em;
+    font-size: 6rem;
     text-align: center;
     color: #F9B458; }
   .indexCover #masterClassCover {
@@ -44,10 +56,16 @@ h4 {
   font-family: 'Neutral Face', sans-serif;
   src: url(../content/NeutralFace.otf); }
 
+h2 {
+  font-family: "Neutral Face", sans-serif; }
+
 h3 {
   font-family: "Prompt", sans-serif; }
 
 h4 {
+  font-family: "Prompt", sans-serif; }
+
+p {
   font-family: "Prompt", sans-serif; }
 
 .cursosContainer {
@@ -56,29 +74,65 @@ h4 {
   flex-flow: column;
   justify-content: center;
   align-items: center; }
-  .cursosContainer .carrito {
-    width: 30%;
-    margin: 1rem;
-    padding: 1rem;
-    padding-top: 0;
-    background-color: #EE9881;
-    border: 2px solid #F9B458;
-    border-radius: 10px;
-    display: flex;
-    flex-flow: column;
-    align-items: center; }
-    .cursosContainer .carrito div {
-      width: 75%;
-      padding: 1rem;
-      border-bottom: 2px solid #FDD4CD;
-      text-align: center; }
-  .cursosContainer .divTotal {
-    margin: 1rem;
+  .cursosContainer h3,
+  .cursosContainer h4 {
+    color: #727072; }
+  .cursosContainer .cursosLink {
+    padding: 1.5rem 2rem;
+    width: 50%;
+    border-bottom: 2px solid #EE9881; }
+    .cursosContainer .cursosLink h2 {
+      font-size: 2.5rem;
+      color: #F9B458; }
+    .cursosContainer .cursosLink p {
+      padding-top: 0.5rem;
+      font-size: 16px;
+      color: #727072; }
+    .cursosContainer .cursosLink button {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border: 2px solid #F9B458;
+      border-radius: 10px;
+      background-color: #e6563c;
+      font-family: "Prompt", sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+      color: #F9B458; }
+  .cursosContainer #curso1 {
+    text-align: left; }
+  .cursosContainer #curso2 {
+    text-align: right; }
+  .cursosContainer #curso3 {
+    text-align: left; }
+
+.carritoContainer {
+  margin: 1rem 25%;
+  padding: 1rem;
+  background-color: #EE9881;
+  border: 2px solid #F9B458;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  align-self: center; }
+  .carritoContainer div {
+    width: 75%;
+    margin: 1rem 0;
     padding: 1rem;
     background-color: #F9B458;
-    border: 3px solid #e6563c;
     border-radius: 10px;
-    text-align: center; }
+    text-align: center;
+    color: #727072; }
+    .carritoContainer div button {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border: 2px solid #e6563c;
+      border-radius: 10px;
+      background-color: #F9B458;
+      font-family: "Prompt", sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+      color: #e6563c; }
 
 /*GENERAL */
 body {
@@ -129,7 +183,7 @@ nav {
 /*FOOTER*/
 .footerContainer {
   padding: 1rem 2rem;
-  background-color: #f4952f;
+  background-color: #F9B458;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -141,24 +195,24 @@ nav {
     flex-flow: column; }
     .footerContainer .footerIcons .aIcons {
       margin: 0.5rem 0;
-      border-bottom: 1px solid #F9B458;
+      border-bottom: 1px solid #FDD4CD;
       display: flex;
       justify-content: center;
       align-items: center; }
       .footerContainer .footerIcons .aIcons .iconImg {
         margin-right: 1rem;
-        color: #FDD4CD; }
+        color: #727072; }
       .footerContainer .footerIcons .aIcons .footerIconTitle {
         font-family: "Prompt", sans-serif;
         text-align: start;
-        color: #FDD4CD;
+        color: #727072;
         flex-grow: 1;
         flex-shrink: 1;
         flex-basis: 0%; }
       .footerContainer .footerIcons .aIcons .footerIconAddress {
         font-family: "Prompt", sans-serif;
         text-align-last: end;
-        color: #FDD4CD;
+        color: #727072;
         flex-grow: 1;
         flex-shrink: 1;
         flex-basis: 0%; }

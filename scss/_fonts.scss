@@ -7,10 +7,18 @@
 $mainFont: 'Prompt', sans-serif;
 $downloadFont :'Neutral Face', sans-serif;
 
+h2{
+  font-family: $downloadFont;
+}
+
 h3{
   font-family: $mainFont;
 }
 
 h4{
+  font-family: $mainFont;
+}
+
+p{
   font-family: $mainFont;
 }

@@ -74,7 +74,7 @@ nav {
 
 .footerContainer {
   padding: 1rem 2rem;
-  background-color: $amarillo;
+  background-color: $amaranja;
 
   display: flex;
   flex-flow: column;
@@ -89,20 +89,20 @@ nav {
     flex-flow: column;
     .aIcons {
       margin: 0.5rem 0;
-      border-bottom: 1px solid $amaranja;
+      border-bottom: 1px solid $rosaPalo;
       
       display: flex;
       justify-content:center ;
       align-items: center;
       .iconImg {
         margin-right: 1rem;
-        color:$rosaPalo;
+        color:$grisOscuro;
       }
 
       .footerIconTitle {
         font-family: $mainFont;
         text-align: start;
-        color: $rosaPalo;
+        color: $grisOscuro;
 
         flex-grow: 1;
         flex-shrink: 1;
@@ -112,7 +112,7 @@ nav {
       .footerIconAddress {
         font-family: $mainFont;
         text-align-last: end;
-        color: $rosaPalo;
+        color: $grisOscuro;
 
         flex-grow: 1;
         flex-shrink: 1;
