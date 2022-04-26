@@ -1,7 +1,25 @@
 let arrCursos = [
-  { id: 1, nombre: "Master Class Negocios", descripcion: "En esta master class podras aprender lo necesario para ser un buen negociante. Ya sea que quieras crear tu propio negocio, mejorar tu negocio o simplemente dar un mejor desempeño en negocios de una empresa en la que trabajas, este curso es para ti.", precio: 2500, duracion: 2 },
-  { id: 2, nombre: "Emprendiendo tu Negocio", descripcion: "Este es el curso perfecto para quienes inician su negocio o incluso para quienes ya tienen un negocio establecido pero quieren saber como hacerlo crecer y tener las bases de tu negocio bien establecidas.", precio: 9250, duracion: 14 },
-  { id: 3, nombre: "Desarrolla tus Habilidades como Vendedor", descripcion: "Si quieres vender mas productos para tu negocio o para la empresa en la que trabajas, en este curso te decimos como mejorar tus estrategias de vendedor. Desde que se puede trabajar en el propio producto hasta el seguimiento al cliente.", precio: 6999, duracion: 6 },
+  {
+    id: 1,
+    nombre: "Master Class Negocios",
+    descripcion: "En esta master class podras aprender lo necesario para ser un buen negociante. Ya sea que quieras crear tu propio negocio, mejorar tu negocio o simplemente dar un mejor desempeño en negocios de una empresa en la que trabajas, este curso es para ti.",
+    precio: 2500,
+    duracion: 2
+  },
+  {
+    id: 2,
+    nombre: "Emprendiendo tu Negocio",
+    descripcion: "Este es el curso perfecto para quienes inician su negocio o incluso para quienes ya tienen un negocio establecido pero quieren saber como hacerlo crecer y tener las bases de tu negocio bien establecidas.",
+    precio: 9250,
+    duracion: 14
+  },
+  {
+    id: 3,
+    nombre: "Desarrolla tus Habilidades como Vendedor",
+    descripcion: "Si quieres vender mas productos para tu negocio o para la empresa en la que trabajas, en este curso te decimos como mejorar tus estrategias de vendedor. Desde que se puede trabajar en el propio producto hasta el seguimiento al cliente.",
+    precio: 6999,
+    duracion: 6
+  },
 ];
 
 let carrito = [];
@@ -41,7 +59,6 @@ function mostrarProductos(array) {
 }
 
 
-
 function agregarCarrito(id) {
   let cursoSeleccionado = arrCursos.find(element => element.id == id);
   if (carrito.find(element => element.id == cursoSeleccionado.id)) {
@@ -52,8 +69,9 @@ function agregarCarrito(id) {
     mostrarCarrito(cursoSeleccionado);
     alert(`El curso "${cursoSeleccionado.nombre}" se ha añadido a tu carrito.`)
   }
-}
 
+  localStorage.setItem("carritoStr", JSON.stringify(carrito));
+}
 
 
 function mostrarCarrito(cursoSeleccionado) {
@@ -74,8 +92,10 @@ function mostrarCarrito(cursoSeleccionado) {
     btnEliminar.parentElement.remove();
     carrito = carrito.filter(element => element.id != cursoSeleccionado.id);
     actualizarCarrito();
+    localStorage.setItem("carritoStr", JSON.stringify(carrito));
   }
 }
+
 
 function actualizarCarrito() {
   let total = carrito.reduce((acc, el) => acc + el.precio, 0);
@@ -105,3 +125,17 @@ function actualizarCarrito() {
       `
   }
 }
+
+function recuperar() {
+  let recuperarCarrito = JSON.parse(localStorage.getItem("carritoStr"));
+
+  if (recuperarCarrito) {
+    recuperarCarrito.forEach(el => {
+      mostrarCarrito(el)
+      carrito.push(el)
+      actualizarCarrito()
+    })
+  }
+}
+
+recuperar();
