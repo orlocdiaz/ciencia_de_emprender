@@ -1,2 +1,4 @@
 node_modules/
 ./script/cursos2.js
+./scss/_try.scss
+./pages/try.html

@@ -3,7 +3,7 @@
 
 .indexCover{
   margin: 0 10%;
-  height: 75vh;
+  min-height: 75vh;
 
   display: flex;
   flex-flow: column;
@@ -21,6 +21,6 @@
     margin: 2rem;
     padding: 1.5rem 4rem;
     font-size: 26px;
-    font-weight: bolder;
+    font-weight: normal;
   }
 }

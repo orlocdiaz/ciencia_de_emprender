@@ -7,6 +7,7 @@
 @import "fonts";
 @import "index";
 @import "cursos";
+@import "try";
 
 /*GENERAL */
 
@@ -15,6 +16,29 @@ body {
 }
 a {
   text-decoration: none;
+}
+
+.swal2-modal{
+  border: 5px solid $salmon !important;
+
+  .swal2-title {
+    font-family: $mainFont;
+    font-size: 1.5rem !important;
+    font-weight: 400 !important;
+  }
+}
+.swal2-actions{
+  button{
+    font-weight: 400 !important;
+    color: $amaranja !important;
+  }
+}
+
+.swal2-toast{
+  .swal2-title {
+    font-weight: 400 !important;
+    font-family: $mainFont;
+  }
 }
 
 /*NAV*/
@@ -54,21 +78,23 @@ nav {
     }
 
     .masterClassButton {
-      text-align: end;
       width: 25%;
+      text-align: end;
     }
   }
 }
 
 .masterClassLink {
   padding: 0.75rem 1.5rem;
-  background-color: $rojo;
+  background-color: $salmon;
   border-radius: 10px;
   font-family: $mainFont;
   font-size: 20px;
-  font-weight: bolder;
-  color: $amaranja;
+  font-weight: normal;
+  color: white;
+  border: 2px solid white;
 }
+
 
 /*FOOTER*/
 

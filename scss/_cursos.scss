@@ -1,92 +1,254 @@
 @import "colors";
 @import "fonts";
 
-.cursosContainer {
-  min-height: 80vh;
+.carritoFlex::-webkit-scrollbar {
+  width: 8px;
+  background-color: #00000000;
+  border-radius: 10px;
+}
 
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
+.carritoFlex::-webkit-scrollbar-thumb {
+  background: $amaranja;
+  border-radius: 10px;
+}
 
-  h3,
-  h4 {
-    color: $grisOscuro;
-  }
+.gridCursos {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 1fr;
 
-  .cursosLink {
-    padding: 1.5rem 2rem;
-    width: 50%;
-    border-bottom: 2px solid $salmon;
+  .cursosContainer {
+    min-height: 80vh;
+    min-width: 50vw;
 
-    h2 {
-      font-size: 2.5rem;
-      color: $amaranja;
-    }
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
 
-    p {
-      padding-top: 0.5rem;
-      font-size: 16px;
+    h3,
+    h4 {
       color: $grisOscuro;
     }
 
-    button{
-      margin: 0.5rem 0;
-      padding: 0.5rem;
-      border: 2px solid $amaranja;
-      border-radius: 10px;
-      background-color: $rojo;
-      font-family: $mainFont;
-      font-weight: bold;
-      font-size: 16px;
-      color: $amaranja;
+    .cursosLink {
+      padding: 1.5rem 2rem;
+      width: 80%;
+      border-bottom: 2px solid $salmon;
+
+      h2 {
+        font-size: 2.5rem;
+        color: $amaranja;
+      }
+
+      p {
+        padding-top: 0.5rem;
+        font-size: 16px;
+        color: $grisOscuro;
+      }
+
+      .cursoFin {
+        grid-area: cursoFin;
+      }
+
+      button {
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+        border: 2px solid white;
+        border-radius: 10px;
+        background: linear-gradient(to right, white 50%, $salmon 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        font-family: $mainFont;
+        font-weight: normal;
+        font-size: 18px;
+        color: white;
+
+        cursor: pointer;
+
+        transition: all 0.2s ease-out;
+      }
+
+      button:hover {
+        border: 2px solid $salmon;
+        background-position: left bottom;
+        color: $salmon;
+      }
+    }
+
+    #curso1 {
+      text-align: left;
+    }
+
+    #curso2 {
+      text-align: right;
+    }
+
+    #curso3 {
+      margin-bottom: 1.5rem;
+      text-align: left;
     }
   }
 
-  #curso1 {
-    text-align: left;
-  }
+  .carricono {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    align-items: flex-end;
 
-  #curso2{
-    text-align: right;
-  }
+    position: sticky;
+    bottom: 0rem;
+    align-self: flex-end;
+    z-index: 6;
 
-  #curso3{
-    text-align: left;
+    .carritoIconContainer {
+      margin: 1.5rem 3rem;
+      width: 5rem;
+      height: 5rem;
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
+      align-items: center;
+
+      border: solid 2px white;
+      border-radius: 50%;
+      background-color: $salmon;
+      overflow: visible;
+
+      cursor: pointer;
+
+      p {
+        font-size: 22px;
+        font-family: $mainFont;
+        font-weight: bold;
+        color: white;
+        position: absolute;
+      }
+    }
   }
 }
 
 .carritoContainer {
-  margin: 1rem 25%;
-  padding: 1rem;
-  background-color: $salmon;
-  border: 2px solid $amaranja;
-  border-radius: 10px;
-
-  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0000007e;
+  display: none;
   flex-flow: column;
+  justify-content: center;
   align-items: center;
-  align-self: center;
+  position: fixed;
+  top: 0vh;
+  z-index: 0;
 
-  div {
-    width: 75%;
-    margin: 1rem 0;
+  .carritoFlex {
     padding: 1rem;
-    background-color: $amaranja;
+    width: 50%;
+    max-height: 30rem;
+    background-color: $rosaPalo;
+    border: 10px solid $salmon;
     border-radius: 10px;
-    text-align: center;
-    color: $grisOscuro;
 
-    button{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    align-self: center;
+
+    overflow-y: scroll;
+
+    #carritoTitle {
+      margin: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: 2.5rem;
+      color: $amaranja;
+    }
+
+    #carritoClose {
+      position: fixed;
+      align-self: flex-end;
+
+      cursor: pointer;
+    }
+
+    .carritoProductos {
       margin: 0.5rem 0;
-      padding: 0.5rem;
-      border: 2px solid $rojo;
+      width: 80%;
+      // text-align: center;
+      color: $grisOscuro;
+
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      align-self: center;
+
+      .carritoCurso {
+        padding: 0.5rem 0rem;
+        width: 100%;
+        border-bottom: solid 2px $salmon;
+
+        display: grid;
+        grid-template-areas: "status status" "nombre basura" "precio basura" "cursoFin basura";
+        grid-template-columns: 90% 10%;
+
+        .carritoNombre {
+          margin: 0.5rem;
+          margin-right: 0;
+          font-size: 1.5rem;
+          font-weight: normal;
+          color: $salmon;
+          text-align: left;
+
+          grid-area: nombre;
+        }
+
+        button {
+          margin: 0.5rem;
+          border: none;
+          background-color: #00000000;
+          color: $rojo;
+
+          grid-area: basura;
+          justify-content: right;
+
+          cursor: pointer;
+        }
+
+        p {
+          margin-left: 0.5rem;
+          margin-bottom: 0.5rem;
+          grid-area: precio;
+        }
+
+        #carritoStatus {
+          margin-bottom: 1rem;
+          margin-left: 0;
+          padding: 1rem 0.5rem;
+          background-color: $salmon;
+          border-radius: 10px;
+          font-size: 1rem;
+          text-align: center;
+          color: white;
+
+          grid-area: status;
+        }
+      }
+    }
+
+    .precioTotal {
+      // background-color: $amaranja;
+      margin: 1rem 0;
+      padding: 1.5rem 0;
+      width: 80%;
+      border: solid 5px $amaranja;
       border-radius: 10px;
-      background-color: $amaranja;
-      font-family: $mainFont;
-      font-weight: bold;
-      font-size: 16px;
-      color: $rojo;
+      text-align: center;
+      color: $grisOscuro;
+
+      p {
+        font-size: 2rem;
+        font-weight: bold;
+        color: $amaranja;
+      }
     }
   }
 }
