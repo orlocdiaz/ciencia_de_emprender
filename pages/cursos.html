@@ -111,6 +111,7 @@
       </div>
 
       <div class="pagoContainer">
+        <h2 id="pagoTitle">Pago</h2>
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#e6563c" class="bi bi-x-circle"
           viewBox="0 0 16 16" id="pagarClose">
           <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -129,20 +130,26 @@
               d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7H0zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z" />
           </svg>
         </div>
-        <form action="">
-          <div class="nombrePago">
+        <form action="" class="pagoForm">
+          <div class="nombrePago inputsPago">
             <label for="nombre">Nombre</label>
-            <input type="text" name="nombre">
+            <input type="text" name="nombre" required>
           </div>
 
-          <div class="numeroTarjeta">
+          <div class="numeroTarjeta inputsPago">
             <label for="tarjeta">Numero de Tarjeta</label>
-            <input name="tarjeta" maxlength="16" placeholder="____ - ____ - ____ - ____">
+            <input name="tarjeta" minlength="16" maxlength="16" placeholder="____ - ____ - ____ - ____" required>
           </div>
 
-          <div class="vencimientoTarjeta">
+          <div class="vencimientoTarjeta inputsPago">
             <label for="vencimiento">Fecha de Vencimiento</label>
-            <input name="vencimiento" placeholder="mm/aa">
+            <input name="vencimiento" placeholder="mm/aa" minlength="4" maxlength="4" required>
+          </div>
+
+          <div class="enviarPago inputsPago">
+            <a href="#" id="aEnviarPago">
+              <input type="submit" value="Pagar" name="pagar" id="enviarPagoBtn">
+            </a>
           </div>
 
         </form>

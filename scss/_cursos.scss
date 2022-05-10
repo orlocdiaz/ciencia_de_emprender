@@ -321,10 +321,59 @@
   flex-flow: column;
   align-items: center;
 
+  #pagoTitle {
+    margin: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 2.5rem;
+    color: $amaranja;
+  }
+
   #pagarClose {
     position: fixed;
     align-self: flex-end;
 
     cursor: pointer;
+  }
+
+  .pagoForm {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    .inputsPago {
+      margin: 1rem;
+
+      label {
+        font-family: $mainFont;
+      }
+    }
+
+    #aEnviarPago {
+      #enviarPagoBtn {
+        padding: 1rem;
+        font-family: $mainFont;
+        font-size: 18px;
+        color: white;
+        background: linear-gradient(to right, white 50%, $salmon 50%);
+        background-size: 220% 100%;
+        background-position: right bottom;
+        border: 2px solid white;
+        border-radius: 10px;
+
+        transition: all 0.2s ease-out;
+
+        cursor: pointer;
+      }
+    }
+
+    #aEnviarPago:hover {
+      #enviarPagoBtn {
+        border: 2px solid $salmon;
+        background-position: left bottom;
+        color: $salmon;
+      }
+    }
   }
 }

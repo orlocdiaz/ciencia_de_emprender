@@ -295,10 +295,41 @@ p, button {
   position: absolute;
   flex-flow: column;
   align-items: center; }
+  .pagoContainer #pagoTitle {
+    margin: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #F9B458; }
   .pagoContainer #pagarClose {
     position: fixed;
     align-self: flex-end;
     cursor: pointer; }
+  .pagoContainer .pagoForm {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center; }
+    .pagoContainer .pagoForm .inputsPago {
+      margin: 1rem; }
+      .pagoContainer .pagoForm .inputsPago label {
+        font-family: "Prompt", sans-serif; }
+    .pagoContainer .pagoForm #aEnviarPago #enviarPagoBtn {
+      padding: 1rem;
+      font-family: "Prompt", sans-serif;
+      font-size: 18px;
+      color: white;
+      background: linear-gradient(to right, white 50%, #EE9881 50%);
+      background-size: 220% 100%;
+      background-position: right bottom;
+      border: 2px solid white;
+      border-radius: 10px;
+      transition: all 0.2s ease-out;
+      cursor: pointer; }
+    .pagoContainer .pagoForm #aEnviarPago:hover #enviarPagoBtn {
+      border: 2px solid #EE9881;
+      background-position: left bottom;
+      color: #EE9881; }
 
 /*GENERAL */
 body {

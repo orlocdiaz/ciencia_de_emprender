@@ -35,6 +35,7 @@ const carricono = document.querySelector(".carricono");
 const btnPagar = document.querySelector(".btnPagar");
 const pagoContainer = document.querySelector(".pagoContainer");
 const pagarClose = document.querySelector("#pagarClose");
+const enviarPagoBtn = document.querySelector("#enviarPagoBtn")
 
 // MOSTRAR CURSOS EN PANTALLA
 
@@ -228,20 +229,6 @@ function actualizarCarrito() {
   }
 }
 
-//GUARDAR CARRITO EN LOCAL STORAGE
-
-function recuperar() {
-  let recuperarCarrito = JSON.parse(localStorage.getItem("carritoStorage"));
-
-  recuperarCarrito.forEach(el => {
-    mostrarCarrito(el)
-    carrito.push(el)
-    actualizarCarrito()
-  })
-}
-
-recuperar();
-
 //MOSTRAR Y CERRAR CARRITO AL PRESIONAR ICONO
 
 carritoIconContainer.onclick = () => {
@@ -256,6 +243,8 @@ carritoClose.onclick = () => {
   carritoContainer.style.display = "none";
 }
 
+//MOSTRAR Y CERRAR PANTALLA DE PAGO
+
 btnPagar.onclick = () => {
   pagoContainer.style.display = "flex"
 }
@@ -263,3 +252,24 @@ btnPagar.onclick = () => {
 pagarClose.onclick = () => {
   pagoContainer.style.display = "none"
 }
+
+//ELIMINAR CARRITO AL PAGAR
+
+enviarPagoBtn.onclick = () => {
+  carrito.splice(0,carrito.length);
+  localStorage.setItem("carritoStorage", JSON.stringify(carrito))
+}
+
+//GUARDAR CARRITO EN LOCAL STORAGE
+
+function recuperar() {
+  let recuperarCarrito = JSON.parse(localStorage.getItem("carritoStorage"));
+
+  recuperarCarrito.forEach(el => {
+    mostrarCarrito(el)
+    carrito.push(el)
+    actualizarCarrito()
+  })
+}
+
+recuperar();
