@@ -1,34 +1,15 @@
-var DateTime = luxon.DateTime;
+let DateTime = luxon.DateTime;
 let dtn = DateTime.now();
+const arrCursos = [];
 
-let arrCursos = [
-  {
-    id: 1,
-    nombre: "Master Class Negocios",
-    descripcion: "En esta master class podras aprender lo necesario para ser un buen negociante. Ya sea que quieras crear tu propio negocio, mejorar tu negocio o simplemente dar un mejor desempeño en negocios de una empresa en la que trabajas, este curso es para ti.",
-    precio: 2500,
-    duracion: 2,
-    fin: dtn.plus({days:4}).toLocaleString({weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'})
-  },
-  {
-    id: 2,
-    nombre: "Emprendiendo tu Negocio",
-    descripcion: "Este es el curso perfecto para quienes inician su negocio o incluso para quienes ya tienen un negocio establecido pero quieren saber como hacerlo crecer y tener las bases de tu negocio bien establecidas.",
-    precio: 9250,
-    duracion: 14,
-    fin: dtn.plus({days:28}).toLocaleString({weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'})
-  },
-  {
-    id: 3,
-    nombre: "Desarrolla tus Habilidades como Vendedor",
-    descripcion: "Si quieres vender mas productos para tu negocio o para la empresa en la que trabajas, en este curso te decimos como mejorar tus estrategias de vendedor. Desde que se puede trabajar en el propio producto hasta el seguimiento al cliente.",
-    precio: 6999,
-    duracion: 6,
-    fin: dtn.plus({days:12}).toLocaleString({weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'})
-  },
-];
-
-console.log(dtn.plus({days:5}).toLocaleString());
+fetch("../json/cursos.json")
+  .then((r) => r.json())
+  .then((cursosF) => {
+    cursosF.map(element => {
+      arrCursos.push(element);
+    });
+    mostrarProductos(arrCursos)
+  });
 
 let carrito = [];
 
@@ -51,8 +32,9 @@ const precioTotal = document.querySelector(".precioTotal");
 const carritoCurso = document.querySelectorAll(".carritoCurso");
 const carritoStatus = document.querySelector("#carritoStatus");
 const carricono = document.querySelector(".carricono");
-
-mostrarProductos(arrCursos);
+const btnPagar = document.querySelector(".btnPagar");
+const pagoContainer = document.querySelector(".pagoContainer");
+const pagarClose = document.querySelector("#pagarClose");
 
 // MOSTRAR CURSOS EN PANTALLA
 
@@ -62,17 +44,18 @@ function mostrarProductos(array) {
     currency: "MXN"
   });
   array.forEach(element => {
+    let { id, nombre, descripcion, precio, duracion, fin } = element;
     let divCursos = document.createElement('div');
     divCursos.classList.add('cursosLink');
-    divCursos.setAttribute('id', `curso${element.id}`)
+    divCursos.setAttribute('id', `curso${id}`)
 
     divCursos.innerHTML += `
-      <h2 class="tituloCurso">${element.nombre}</h2>
-      <p class="cursoDesc">${element.descripcion}</p>
-      <p class="cursoDuracion">Este curso tiene una duración total de ${element.duracion} horas.</p>
-      <p class="cursoFin">Si inicias este curso el dia de hoy la fecha estiamada de finalización será el día ${element.fin}</p>
-      <p class="cursoPrecio">Precio: ${pesoMXN.format(element.precio)}</p>
-      <button id="btn${element.id}">Agregar</button>
+      <h2 class="tituloCurso">${nombre}</h2>
+      <p class="cursoDesc">${descripcion}</p>
+      <p class="cursoDuracion">Este curso tiene una duración total de ${duracion} horas.</p>
+      <p class="cursoFin">Fecha estimada de finalización el día ${dtn.plus({ days: fin }).toLocaleString({ weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</p>
+      <p class="cursoPrecio">Precio: ${pesoMXN.format(precio)}</p>
+      <button id="btn${id}">Agregar</button>
     `
 
     cursosContainer.appendChild(divCursos);
@@ -89,7 +72,7 @@ function mostrarProductos(array) {
 function agregarCarrito(id) {
   let cursoSeleccionado = arrCursos.find(element => element.id == id);
   if (carrito.find(element => element.id == cursoSeleccionado.id)) {
-    
+
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-start',
@@ -107,7 +90,7 @@ function agregarCarrito(id) {
   else {
     carrito.push(cursoSeleccionado);
     mostrarCarrito(cursoSeleccionado);
-    
+
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-start',
@@ -123,7 +106,7 @@ function agregarCarrito(id) {
     })
   }
 
-  localStorage.setItem("carritoStr", JSON.stringify(carrito));
+  localStorage.setItem("carritoStorage", JSON.stringify(carrito));
 }
 
 //MOSTRAR EL DIV DEL CARRITO
@@ -133,13 +116,15 @@ function mostrarCarrito(cursoSeleccionado) {
     style: "currency",
     currency: "MXN"
   });
+  let { id, nombre, precio, duracion } = cursoSeleccionado;
   let divCarrito = document.createElement('div');
   divCarrito.className = "carritoCurso";
-  divCarrito.setAttribute('id', `carritoCurso${cursoSeleccionado.id}`);
-  divCarrito.innerHTML = 
-  `<h4 class="carritoNombre">${cursoSeleccionado.nombre}</h4>
-    <p>${pesoMXN.format(cursoSeleccionado.precio)} MXN</p>
-    <button class="btnEliminar" id="eliminar${cursoSeleccionado.id}">
+  divCarrito.setAttribute('id', `carritoCurso${id}`);
+  divCarrito.innerHTML =
+    `<h4 class="carritoNombre">${nombre}</h4>
+    <p class="carritoDuracion">Duración total ${duracion} horas</p>
+    <p>${pesoMXN.format(precio)} MXN</p>
+    <button class="btnEliminar" id="eliminar${id}">
       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
         <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
       </svg>
@@ -154,7 +139,6 @@ function mostrarCarrito(cursoSeleccionado) {
       width: '25%',
       background: '#F9B458',
       title: '¿Deseas eliminar este curso de tu carrito?',
-      // icon: 'warning',
       color: '#727072',
       showCancelButton: true,
       confirmButtonColor: '#e6563c',
@@ -166,8 +150,8 @@ function mostrarCarrito(cursoSeleccionado) {
         btnEliminar.parentElement.remove();
         carrito = carrito.filter(element => element.id != cursoSeleccionado.id);
         actualizarCarrito();
-        localStorage.setItem("carritoStr", JSON.stringify(carrito));
-        
+        localStorage.setItem("carritoStorage", JSON.stringify(carrito));
+
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-start',
@@ -207,6 +191,7 @@ function actualizarCarrito() {
         d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
     </svg>`
   }
+
   let total = carrito.reduce((acc, el) => acc + el.precio, 0);
   let descuento = carrito.length;
   let pesoMXN = Intl.NumberFormat('es-MX', {
@@ -214,24 +199,28 @@ function actualizarCarrito() {
     currency: "MXN"
   });
   if (descuento <= 0) {
-    carritoStatus.innerHTML = `El carrito esta vacío.<br>Recuerda que al adquirir mas de 1 de nuestros cursos obtendras un descuento.`
+    btnPagar.style.display = "none";
+    carritoStatus.innerHTML = `El carrito esta vacío.<br>Recuerda que al adquirir mas de 1 de nuestros cursos obtendrás un descuento.`
     precioTotal.innerHTML = `
       <p>Total: ${pesoMXN.format(total)} MXN</p>
       `
   }
   else if (descuento == 1) {
+    btnPagar.style.display = "inline-block";
     carritoStatus.innerHTML = `Selecciona uno mas de nuestos cursos para obtener un descuento.`
     precioTotal.innerHTML = `
       <p>Total: ${pesoMXN.format(total)} MXN</p>
       `
   }
   else if (descuento == 2) {
+    btnPagar.style.display = "inline-block";
     carritoStatus.innerHTML = `Obtienes 5% de descuento al seleccionar 2 de nuestros cursos.<br>Selecciona otro de nuestros cursos y recibe un descuento mayor.`
     precioTotal.innerHTML = `
       <p>Total: ${pesoMXN.format(total * 0.95)} MXN</p>
       `
   }
   else {
+    btnPagar.style.display = "inline-block";
     carritoStatus.innerHTML = `Obtienes 10% de descuento al seleccionar 3 de nuestros cursos.`
     precioTotal.innerHTML = `
       <p>Total: ${pesoMXN.format(total * 0.9)} MXN</p>
@@ -242,15 +231,13 @@ function actualizarCarrito() {
 //GUARDAR CARRITO EN LOCAL STORAGE
 
 function recuperar() {
-  let recuperarCarrito = JSON.parse(localStorage.getItem("carritoStr"));
+  let recuperarCarrito = JSON.parse(localStorage.getItem("carritoStorage"));
 
-  if (recuperarCarrito) {
-    recuperarCarrito.forEach(el => {
-      mostrarCarrito(el)
-      carrito.push(el)
-      actualizarCarrito()
-    })
-  }
+  recuperarCarrito.forEach(el => {
+    mostrarCarrito(el)
+    carrito.push(el)
+    actualizarCarrito()
+  })
 }
 
 recuperar();
@@ -258,7 +245,6 @@ recuperar();
 //MOSTRAR Y CERRAR CARRITO AL PRESIONAR ICONO
 
 carritoIconContainer.onclick = () => {
-  // carritoContainer.style.display = "none";
   if (carritoContainer.style.display === "flex") {
     carritoContainer.style.display = "none";
   } else {
@@ -268,4 +254,12 @@ carritoIconContainer.onclick = () => {
 
 carritoClose.onclick = () => {
   carritoContainer.style.display = "none";
+}
+
+btnPagar.onclick = () => {
+  pagoContainer.style.display = "flex"
+}
+
+pagarClose.onclick = () => {
+  pagoContainer.style.display = "none"
 }

@@ -47,10 +47,6 @@
         color: $grisOscuro;
       }
 
-      .cursoFin {
-        grid-area: cursoFin;
-      }
-
       button {
         margin: 0.5rem 0;
         padding: 0.5rem;
@@ -78,15 +74,48 @@
 
     #curso1 {
       text-align: left;
+
+      .cursoDuracion {
+        text-align: right;
+      }
+      .cursoFin {
+        text-align: right;
+      }
+
+      .cursoPrecio {
+        text-align: right;
+      }
     }
 
     #curso2 {
       text-align: right;
+
+      .cursoDuracion {
+        text-align: left;
+      }
+      .cursoFin {
+        text-align: left;
+      }
+
+      .cursoPrecio {
+        text-align: left;
+      }
     }
 
     #curso3 {
       margin-bottom: 1.5rem;
       text-align: left;
+
+      .cursoDuracion {
+        text-align: right;
+      }
+      .cursoFin {
+        text-align: right;
+      }
+
+      .cursoPrecio {
+        text-align: right;
+      }
     }
   }
 
@@ -187,7 +216,7 @@
         border-bottom: solid 2px $salmon;
 
         display: grid;
-        grid-template-areas: "status status" "nombre basura" "precio basura" "cursoFin basura";
+        grid-template-areas: "status status" "nombre basura" "duracion basura" "precio basura" "cursoFin basura";
         grid-template-columns: 90% 10%;
 
         .carritoNombre {
@@ -217,6 +246,10 @@
           margin-left: 0.5rem;
           margin-bottom: 0.5rem;
           grid-area: precio;
+        }
+
+        .carritoDuracion {
+          grid-area: duracion;
         }
 
         #carritoStatus {
@@ -250,5 +283,47 @@
         color: $amaranja;
       }
     }
+
+    .btnPagar {
+      padding: 1rem;
+      font-family: $mainFont;
+      font-size: 18px;
+      color: white;
+      background: linear-gradient(to right, white 50%, $salmon 50%);
+      background-size: 220% 100%;
+      background-position: right bottom;
+      border: 2px solid white;
+      border-radius: 10px;
+
+      transition: all 0.2s ease-out;
+
+      cursor: pointer;
+    }
+
+    .btnPagar:hover {
+      border: 2px solid $salmon;
+      background-position: left bottom;
+      color: $salmon;
+    }
+  }
+}
+
+.pagoContainer {
+  padding: 1rem;
+  width: 50%;
+  height: 30rem;
+  background-color: $rosaPalo;
+  border: 10px solid $salmon;
+  border-radius: 10px;
+  display: none;
+  position: absolute;
+  flex-flow: column;
+  align-items: center;
+
+  #pagarClose {
+    position: fixed;
+    align-self: flex-end;
+
+    cursor: pointer;
   }
 }

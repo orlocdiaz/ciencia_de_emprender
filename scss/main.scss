@@ -69,6 +69,10 @@ nav {
       display: flex;
       flex-flow: row;
 
+      a:hover {
+        border-bottom: 2px solid white;
+      }
+
       li {
         padding: 10px 30px;
         font-family: $mainFont;
@@ -86,13 +90,23 @@ nav {
 
 .masterClassLink {
   padding: 0.75rem 1.5rem;
-  background-color: $salmon;
+  background: linear-gradient(to right, white 50%, $salmon 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
   border-radius: 10px;
   font-family: $mainFont;
   font-size: 20px;
   font-weight: normal;
   color: white;
   border: 2px solid white;
+
+  transition: all 0.2s ease-out;
+}
+
+.masterClassLink:hover {
+  border: 2px solid $salmon;
+  background-position: left bottom;
+  color: $salmon;
 }
 
 

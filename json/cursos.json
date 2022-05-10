@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nombre": "Master Class Negocios",
+    "descripcion": "En esta master class podras aprender lo necesario para ser un buen negociante. Ya sea que quieras crear tu propio negocio, mejorar tu negocio o simplemente dar un mejor desempeño en negocios de una empresa en la que trabajas, este curso es para ti.",
+    "precio": 2500,
+    "duracion": 2,
+    "fin": 4
+  },
+  {
+    "id": 2,
+    "nombre": "Emprendiendo tu Negocio",
+    "descripcion": "Este es el curso perfecto para quienes inician su negocio o incluso para quienes ya tienen un negocio establecido pero quieren saber como hacerlo crecer y tener las bases de tu negocio bien establecidas.",
+    "precio": 9250,
+    "duracion": 14,
+    "fin": 28
+  },
+  {
+    "id": 3,
+    "nombre": "Desarrolla tus Habilidades como Vendedor",
+    "descripcion": "Si quieres vender mas productos para tu negocio o para la empresa en la que trabajas, en este curso te decimos como mejorar tus estrategias de vendedor. Desde que se puede trabajar en el propio producto hasta el seguimiento al cliente.",
+    "precio": 6999,
+    "duracion": 6,
+    "fin": 12
+  }
+]
