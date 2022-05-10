@@ -276,6 +276,7 @@ p, button {
       background-position: right bottom;
       border: 2px solid white;
       border-radius: 10px;
+      display: none;
       transition: all 0.2s ease-out;
       cursor: pointer; }
     .carritoContainer .carritoFlex .btnPagar:hover {
@@ -298,23 +299,6 @@ p, button {
     position: fixed;
     align-self: flex-end;
     cursor: pointer; }
-
-.container {
-  height: 100vh;
-  width: 100vw;
-  background-color: red;
-  border: 1px solid blue;
-  display: grid;
-  grid-template-areas: "pa pi" "pe pi"; }
-  .container .pa {
-    background-color: black;
-    grid-area: pa; }
-  .container .pe {
-    background-color: grey;
-    grid-area: pe; }
-  .container .pi {
-    background-color: white;
-    grid-area: pi; }
 
 /*GENERAL */
 body {
