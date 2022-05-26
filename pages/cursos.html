@@ -112,12 +112,14 @@
 
       <div class="pagoContainer">
         <h2 id="pagoTitle">Pago</h2>
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#e6563c" class="bi bi-x-circle"
-          viewBox="0 0 16 16" id="pagarClose">
-          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-          <path
-            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-        </svg>
+        <div class="containerClose">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#e6563c" class="bi bi-x-circle"
+            viewBox="0 0 16 16" id="pagarClose">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </div>
         <div class="metodosPago">
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-paypal"
             viewBox="0 0 16 16">
@@ -130,20 +132,29 @@
               d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7H0zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z" />
           </svg>
         </div>
-        <form action="" class="pagoForm">
-          <div class="nombrePago inputsPago">
-            <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" required>
-          </div>
-
+        <form action="" class="pagoForm" autocomplete="off">
           <div class="numeroTarjeta inputsPago">
             <label for="tarjeta">Numero de Tarjeta</label>
-            <input name="tarjeta" minlength="16" maxlength="16" placeholder="____ - ____ - ____ - ____" required>
+            <input name="tarjeta" minlength="18" maxlength="19" placeholder="#### #### #### ####" id="inputNoTarjeta"
+              required>
           </div>
 
-          <div class="vencimientoTarjeta inputsPago">
-            <label for="vencimiento">Fecha de Vencimiento</label>
-            <input name="vencimiento" placeholder="mm/aa" minlength="4" maxlength="4" required>
+          <div class="nombrePago inputsPago">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" minlength="6" placeholder="Titular de la Tarjeta" id="inputNombreTarjeta"
+              required>
+          </div>
+
+          <div class="vencimientoCCV">
+            <div class="vencimientoTarjeta inputsPago">
+              <label for="vencimiento">Fecha de Vencimiento</label>
+              <input name="vencimiento" placeholder="MM/AA" minlength="5" maxlength="5" id="inputVencimiento" required>
+            </div>
+
+            <div class="ccvTarjeta inputsPago">
+              <label for="ccv">CCV</label>
+              <input name="ccv" placeholder="CCV" minlength="3" maxlength="4" id="inputCCV" required>
+            </div>
           </div>
 
           <div class="enviarPago inputsPago">

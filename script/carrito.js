@@ -35,7 +35,12 @@ const carricono = document.querySelector(".carricono");
 const btnPagar = document.querySelector(".btnPagar");
 const pagoContainer = document.querySelector(".pagoContainer");
 const pagarClose = document.querySelector("#pagarClose");
-const enviarPagoBtn = document.querySelector("#enviarPagoBtn")
+const pagoForm = document.querySelector(".pagoForm");
+const enviarPagoBtn = document.querySelector("#enviarPagoBtn");
+const inputNoTarjeta = document.querySelector("#inputNoTarjeta");
+const inputNombreTarjeta = document.querySelector("#inputNombreTarjeta");
+const inputVencimiento = document.querySelector("#inputVencimiento");
+const inputCCV = document.querySelector("#inputCCV");
 
 // MOSTRAR CURSOS EN PANTALLA
 
@@ -253,12 +258,70 @@ pagarClose.onclick = () => {
   pagoContainer.style.display = "none"
 }
 
+//ELIMINAR CARACTERES EN NUMERO DE TARJETA
+
+inputNoTarjeta.onkeyup = (tecla) => {
+  let valTecla = tecla.target.value;
+
+  inputNoTarjeta.value = valTecla
+    .replace(/\s/g, "")
+    .replace(/\D/g, "")
+    .replace(/([0-9]{4})/g, "$1 ")
+    .trim()
+}
+
+//ELIMINAR CARACTERES EN NOMBRE
+
+inputNombreTarjeta.onkeyup = (tecla) => {
+  let valTecla = tecla.target.value;
+
+  inputNombreTarjeta.value = valTecla
+    .replace(/[^\w\sÀ-ÿ\u00f1\u00d1\-]/g, "")
+    .replace(/[0-9\_]/g, "")
+}
+
+//
+
+inputVencimiento.onkeyup = (tecla) => {
+  let valTecla = tecla.target.value;
+  inputVencimiento.value = valTecla
+    .replace(/\s/g, "")
+    .replace(/\D/g, "")
+    .replace(/([0-9]{2})/g, "$1 ")
+    .trim()
+}
+
+//
+
+inputCCV.onkeyup = (tecla) => {
+  let valTecla = tecla.target.value;
+  inputCCV.value = valTecla
+    .replace(/\s/g, "")
+    .replace(/\D/g, "")
+}
+
 //ELIMINAR CARRITO AL PAGAR
 
-enviarPagoBtn.onclick = () => {
-  carrito.splice(0,carrito.length);
+pagoForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  carrito.splice(0, carrito.length);
   localStorage.setItem("carritoStorage", JSON.stringify(carrito))
-}
+
+  Swal.fire({
+    width: '50%',
+    background: '#FDD4CD',
+    title: '¡Gracias por tu Compra!',
+    text: 'Tu pago ha sido procesado',
+    color: '#727072',
+    confirmButtonColor: '#EE9881',
+    confirmButtonText: 'Entendido'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.history.back();
+    }
+  })
+
+})
 
 //GUARDAR CARRITO EN LOCAL STORAGE
 

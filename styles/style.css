@@ -77,6 +77,15 @@ p, button {
   background: #F9B458;
   border-radius: 10px; }
 
+.pagoContainer::-webkit-scrollbar {
+  width: 8px;
+  background-color: #00000000;
+  border-radius: 10px; }
+
+.pagoContainer::-webkit-scrollbar-thumb {
+  background: #F9B458;
+  border-radius: 10px; }
+
 .gridCursos {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
@@ -294,42 +303,83 @@ p, button {
   display: none;
   position: absolute;
   flex-flow: column;
-  align-items: center; }
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll; }
   .pagoContainer #pagoTitle {
-    margin: 1.5rem;
     margin-bottom: 1rem;
     text-align: center;
     font-size: 2.5rem;
     color: #F9B458; }
-  .pagoContainer #pagarClose {
+  .pagoContainer .containerClose {
+    height: 30rem;
     position: fixed;
     align-self: flex-end;
-    cursor: pointer; }
+    justify-self: flex-start; }
+    .pagoContainer .containerClose #pagarClose {
+      cursor: pointer; }
   .pagoContainer .pagoForm {
+    width: 75%;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center; }
+    .pagoContainer .pagoForm .vencimientoCCV {
+      width: 100%;
+      display: flex;
+      flex-flow: row wrap; }
     .pagoContainer .pagoForm .inputsPago {
-      margin: 1rem; }
+      margin: 0.5rem;
+      width: 100%;
+      display: flex;
+      flex-flow: column wrap; }
       .pagoContainer .pagoForm .inputsPago label {
         font-family: "Prompt", sans-serif; }
-    .pagoContainer .pagoForm #aEnviarPago #enviarPagoBtn {
-      padding: 1rem;
-      font-family: "Prompt", sans-serif;
-      font-size: 18px;
-      color: white;
-      background: linear-gradient(to right, white 50%, #EE9881 50%);
-      background-size: 220% 100%;
-      background-position: right bottom;
+    .pagoContainer .pagoForm .vencimientoTarjeta,
+    .pagoContainer .pagoForm .ccvTarjeta {
+      margin: 1rem auto;
+      width: 50%;
+      align-items: center; }
+      .pagoContainer .pagoForm .vencimientoTarjeta .selectVencimiento,
+      .pagoContainer .pagoForm .ccvTarjeta .selectVencimiento {
+        display: flex;
+        flex-flow: row; }
+      .pagoContainer .pagoForm .vencimientoTarjeta #inputCCV,
+      .pagoContainer .pagoForm .ccvTarjeta #inputCCV {
+        width: 90%; }
+    .pagoContainer .pagoForm label {
+      padding: 0.2rem 0.5rem;
+      color: #727072; }
+    .pagoContainer .pagoForm input {
+      padding: 0.5rem;
+      height: 1.2rem;
       border: 2px solid white;
       border-radius: 10px;
-      transition: all 0.2s ease-out;
-      cursor: pointer; }
-    .pagoContainer .pagoForm #aEnviarPago:hover #enviarPagoBtn {
-      border: 2px solid #EE9881;
-      background-position: left bottom;
-      color: #EE9881; }
+      background-color: #EE9881;
+      color: white; }
+    .pagoContainer .pagoForm input::placeholder {
+      color: white; }
+    .pagoContainer .pagoForm input:focus {
+      outline: none; }
+    .pagoContainer .pagoForm .enviarPago {
+      align-items: center; }
+      .pagoContainer .pagoForm .enviarPago #aEnviarPago #enviarPagoBtn {
+        padding: 1rem;
+        height: auto;
+        font-family: "Prompt", sans-serif;
+        font-size: 18px;
+        color: white;
+        background: linear-gradient(to right, white 50%, #EE9881 50%);
+        background-size: 220% 100%;
+        background-position: right bottom;
+        border: 2px solid white;
+        border-radius: 10px;
+        transition: all 0.2s ease-out;
+        cursor: pointer; }
+      .pagoContainer .pagoForm .enviarPago #aEnviarPago:hover #enviarPagoBtn {
+        border: 2px solid #EE9881;
+        background-position: left bottom;
+        color: #EE9881; }
 
 /*GENERAL */
 body {
@@ -344,10 +394,14 @@ a {
     font-family: "Prompt", sans-serif;
     font-size: 1.5rem !important;
     font-weight: 400 !important; }
+  .swal2-modal .swal2-html-container {
+    font-family: "Prompt", sans-serif;
+    font-size: 1rem !important;
+    font-weight: 400 !important; }
 
 .swal2-actions button {
   font-weight: 400 !important;
-  color: #F9B458 !important; }
+  color: white !important; }
 
 .swal2-toast .swal2-title {
   font-weight: 400 !important;
